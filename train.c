@@ -18,16 +18,16 @@ void blowTrainHorn();
 void init(void)
 {
 	// Open serial port
-	ser_fd = open("/tyCo/1",O_WRONLY, 0);
-	printf("\n train id %d",ENGINE_ADDRESS);
+	ser_fd = open("/tyCo/1", O_WRONLY, 0);
+	printf("\n train id %d", ENGINE_ADDRESS);
 	
 	if (ser_fd == -1)
 	{
-		printf("\nSerial Port Not Open, error\n",ser_fd,0,0,0,0,0);
+		printf("\nSerial Port Not Open, error\n", ser_fd, 0, 0, 0, 0, 0);
 	}
 	else
 	{
-		printf("\nSerial Port Open, fd = %d \n",ser_fd,0,0,0,0,0);
+		printf("\nSerial Port Open, fd = %d \n", ser_fd, 0, 0, 0, 0, 0);
 	}
 }
 
