@@ -19,52 +19,48 @@ void blowHorn(void);
 
 int main(int argc, const char* argv[])
 {
-	// TODO: Keep looping for input
-
-	printf("CS 4397.001 Project 1: Trainmaster Train System\n");
-	printf("===============================================\n\n");
-	printf("Select from the menu below:\n");
-	printf("1. Ring the train's bell\n");
-	printf("2. Start the train's engine\n");
-	printf("3. Stop the train's engine\n");
-	printf("4. Exit\n\n");
-
-	int choice = 0;
-	bool valid = false;
-
-	// Get menu choice:
-	do
+	while(true)
 	{
-		printf("Choice: ");
-		valid = scanf("%d", &choice) && choice <= 4 && choice >= 1;
+		printf("CS 4397.001 Project 1: Trainmaster Train System\n");
+		printf("===============================================\n\n");
+		printf("Select from the menu below:\n");
+		printf("1. Ring the train's bell\n");
+		printf("2. Start the train's engine\n");
+		printf("3. Stop the train's engine\n");
+		printf("4. Exit\n\n");
 
-		if (!valid)
+		int choice = 0;
+		bool valid = false;
+
+		// Get menu choice:
+		do
 		{
-			fflush(stdin);
-		}
-	} while (!valid);
+			printf("Enter selection: ");
+			valid = scanf("%d", &choice) && choice <= 4 && choice >= 1;
 
-	// Process input:
-	switch (choice)
-	{
-		case 1:
-			printf("TODO: Ring train's bell\n");
-			break;
-		case 2:
-			printf("TODO: Start train's engine\n");
-			break;
-		case 3:
-			printf("TODO: Stop train's engine\n");
-			break;
-		case 4:
-			dispose();
-			exit(1);
-			break;
-		default:
-			printf("Error: Invalid input.\n");
-			dispose();
-			exit(0);
-			break;
+			if (!valid)
+				fflush(stdin);
+				
+		} while (!valid);
+
+		// Process input:
+		switch (choice)
+		{
+			case 1:
+				printf("TODO: Ring train's bell\n");
+				break;
+			case 2:
+				printf("TODO: Start train's engine\n");
+				break;
+			case 3:
+				printf("TODO: Stop train's engine\n");
+				break;
+			case 4:
+				dispose();
+				exit(0);
+				break;
+			default: printf("Input was invalid. Please try again.\n"); break;
+		}
 	}
 }
 
