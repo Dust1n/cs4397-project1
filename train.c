@@ -8,22 +8,27 @@ unsigned char SerBuf[3], x;
 int ser_fd;
 int dir;
 
-// Function Declarations
+// Function declarations
 void SendCommand();
+void blowTrainHorn();
 
-// Global Data Structures
+// Global data structures
 #define ENGINE_ADDRESS 1
 
 void init(void)
 {
-	// Open Serial Port
-	ser_fd =  open("/tyCo/1",O_WRONLY, 0);
+	// Open serial port
+	ser_fd = open("/tyCo/1",O_WRONLY, 0);
 	printf("\n train id %d",ENGINE_ADDRESS);
-	if( ser_fd == -1)
-			printf("\nSerial Port Not Open, error\n",ser_fd,0,0,0,0,0);
-	else
-			printf("\nSerial Port Open, fd = %d \n",ser_fd,0,0,0,0,0);
 	
+	if (ser_fd == -1)
+	{
+		printf("\nSerial Port Not Open, error\n",ser_fd,0,0,0,0,0);
+	}
+	else
+	{
+		printf("\nSerial Port Open, fd = %d \n",ser_fd,0,0,0,0,0);
+	}
 }
 
 // TODO: Add main()
