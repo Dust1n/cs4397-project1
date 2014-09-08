@@ -12,17 +12,21 @@ int ser_fd;
 int dir;
 
 // Function declarations
-void init(void);
+int init(void);
 int dispose(void);
 void sendCommand(void);
+void ringBell(void);
+void startEngine(void);
+void stopEngine(void);
 void blowHorn(void);
 
 int main(int argc, const char* argv[])
 {
+	printf("CS 4397.001 Project 1: Trainmaster Train System\n");
+	printf("===============================================\n\n");
+
 	while(true)
 	{
-		printf("CS 4397.001 Project 1: Trainmaster Train System\n");
-		printf("===============================================\n\n");
 		printf("Select from the menu below:\n");
 		printf("1. Ring the train's bell\n");
 		printf("2. Start the train's engine\n");
@@ -40,7 +44,7 @@ int main(int argc, const char* argv[])
 
 			if (!valid)
 				fflush(stdin);
-				
+
 		} while (!valid);
 
 		// Process input:
@@ -48,24 +52,30 @@ int main(int argc, const char* argv[])
 		{
 			case 1:
 				printf("TODO: Ring train's bell\n");
+				ringBell();
 				break;
 			case 2:
 				printf("TODO: Start train's engine\n");
+				startEngine();
 				break;
 			case 3:
 				printf("TODO: Stop train's engine\n");
+				stopEngine();
 				break;
 			case 4:
 				dispose();
 				exit(0);
 				break;
-			default: printf("Input was invalid. Please try again.\n"); break;
+			default:
+				printf("Input was invalid. Please try again.\n");
+				break;
 		}
 	}
 }
 
 // Initializes the serial connection.
-void init(void)
+// Returns: 1 if connection was successfully opened, -1 otherwise.
+int init(void)
 {
 	// Open serial port
 	ser_fd = open("/tyCo/1", O_WRONLY, 0);
@@ -74,14 +84,17 @@ void init(void)
 	if (ser_fd == -1)
 	{
 		printf("[ERROR] Unable to open serial port.\n");
+		return -1;
 	}
 	else
 	{
 		printf("Successfully opened serial port; fd = %d\n", ser_fd);
+		reutrn 0;
 	}
 }
 
 // Closes the serial connection.
+// Returns: 0 if connection was successfully closed, -1 otherwise.
 int dispose(void)
 {
 	if (ser_fd > 0)
@@ -89,7 +102,7 @@ int dispose(void)
 		return close(ser_fd);
 	}
 
-	return 0;
+	return -1;
 }
 
 // Sends data to the train via the serial connection.
@@ -99,6 +112,24 @@ void sendCommand(void)
 	SerBuf[0] = (unsigned char)254;
 	SerBuf[1] = (unsigned char)0;
 	numByteWritten = write(ser_fd, SerBuf, 3);
+}
+
+// Instructs the train to start its engine.
+void startEngine(void)
+{
+	// TODO
+}
+
+// Instructs the train to stop its engine.
+void stopEngine(void)
+{
+	// TODO
+}
+
+// Instructs the train to ring its bell.
+void ringBell(void)
+{
+	// TODO
 }
 
 // Instructs the train to blow its horn.
