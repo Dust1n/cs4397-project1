@@ -13,19 +13,59 @@ int dir;
 
 // Function declarations
 void init(void);
+int dispose(void);
 void sendCommand(void);
 void blowHorn(void);
 
 int main(int argc, const char* argv[])
 {
-	printf("CS 4397.001 Project 1: Trainmaster Train System\n\n");
-	printf("Select from the menu below:\n");
-	printf("A. Ring the train's bell\n");
-	printf("B. Start the train's engine\n");
-	printf("C. Stop the train's engine\n");
-	printf("D. Exit");
+	// TODO: Keep looping for input
 
-	// TODO: Get and process user input
+	printf("CS 4397.001 Project 1: Trainmaster Train System\n");
+	printf("===============================================\n\n");
+	printf("Select from the menu below:\n");
+	printf("1. Ring the train's bell\n");
+	printf("2. Start the train's engine\n");
+	printf("3. Stop the train's engine\n");
+	printf("4. Exit\n\n");
+
+	int choice = 0;
+	bool valid = false;
+
+	// Get menu choice:
+	do
+	{
+		printf("Choice: ");
+		valid = scanf("%d", &choice) && choice <= 4 && choice >= 1;
+
+		if (!valid)
+		{
+			fflush(stdin);
+		}
+	} while (!valid);
+
+	// Process input:
+	switch (choice)
+	{
+		case 1:
+			printf("TODO: Ring train's bell\n");
+			break;
+		case 2:
+			printf("TODO: Start train's engine\n");
+			break;
+		case 3:
+			printf("TODO: Stop train's engine\n");
+			break;
+		case 4:
+			dispose();
+			exit(1);
+			break;
+		default:
+			printf("Error: Invalid input.\n");
+			dispose();
+			exit(0);
+			break;
+	}
 }
 
 // Initializes the serial connection.
@@ -43,6 +83,17 @@ void init(void)
 	{
 		printf("Successfully opened serial port; fd = %d\n", ser_fd);
 	}
+}
+
+// Closes the serial connection.
+int dispose(void)
+{
+	if (ser_fd > 0)
+	{
+		return close(ser_fd);
+	}
+
+	return 0;
 }
 
 // Sends data to the train via the serial connection.
