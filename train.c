@@ -44,7 +44,6 @@ int main(int argc, const char* argv[])
 
 			if (!valid)
 				fflush(stdin);
-
 		} while (!valid);
 
 		// Process input:
@@ -89,7 +88,7 @@ int init(void)
 	else
 	{
 		printf("Successfully opened serial port; fd = %d\n", ser_fd);
-		reutrn 0;
+		reutrn 1;
 	}
 }
 
