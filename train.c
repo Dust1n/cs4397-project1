@@ -24,7 +24,7 @@ int main(int argc, const char* argv[])
 	printf("B. Start the train's engine\n");
 	printf("C. Stop the train's engine\n");
 	printf("D. Exit");
-	
+
 	// TODO: Get and process user input
 }
 
@@ -34,7 +34,7 @@ void init(void)
 	// Open serial port
 	ser_fd = open("/tyCo/1", O_WRONLY, 0);
 	printf("\nTrain ID: %d", ENGINE_ADDRESS);
-	
+
 	if (ser_fd == -1)
 	{
 		printf("[ERROR] Unable to open serial port.\n");
@@ -68,5 +68,5 @@ void blowHorn(void)
 
 	x = SerBuf[2];
 
-	SendCommand();
+	sendCommand();
 }
