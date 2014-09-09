@@ -24,7 +24,7 @@ int main(int argc, const char* argv[])
 {
 	printf("CS 4397.001 Project 1: Trainmaster Train System\n");
 	printf("===============================================\n\n");
-
+	
 	while(true)
 	{
 		printf("Select from the menu below:\n");
@@ -50,15 +50,15 @@ int main(int argc, const char* argv[])
 		switch (choice)
 		{
 			case 1:
-				printf("TODO: Ring train's bell\n");
+				printf("Ringing bell...\n");
 				ringBell();
 				break;
 			case 2:
-				printf("TODO: Start train's engine\n");
+				printf("Starting engine...\n");
 				startEngine();
 				break;
 			case 3:
-				printf("TODO: Stop train's engine\n");
+				printf("Stopping engine...\n");
 				stopEngine();
 				break;
 			case 4:
@@ -88,7 +88,7 @@ int init(void)
 	else
 	{
 		printf("Successfully opened serial port; fd = %d\n", ser_fd);
-		reutrn 1;
+		return 1;
 	}
 }
 
