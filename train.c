@@ -62,8 +62,7 @@ int main(int argc, const char* argv[])
 				stopEngine();
 				break;
 			case 4:
-				dispose();
-				exit(0);
+				return dispose();
 				break;
 			default:
 				printf("Input was invalid. Please try again.\n");
