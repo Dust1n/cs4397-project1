@@ -14,7 +14,7 @@ int dir;
 // Function declarations
 int init(void);
 int dispose(void);
-void sendCommand(void);
+void sendCommand(unsigned char cmd);
 void ringBell(void);
 void startEngine(void);
 void stopEngine(void);
@@ -102,19 +102,21 @@ int dispose(void)
 	return -1;
 }
 
-// Sends data to the train via the serial connection.
-void sendCommand(void)
+void sendCommand(unsigned char cmd)
 {
 	int numByteWritten = 0;
 	SerBuf[0] = (unsigned char)254;
 	SerBuf[1] = (unsigned char)0;
+	SerBuf[2] = cmd;
 	numByteWritten = write(ser_fd, SerBuf, 3);
 }
 
 // Instructs the train to start its engine.
 void startEngine(void)
 {
-	// TODO
+	sendCommand(0x6c); //set speed
+	sendCommand(0x00); //set forward direction
+	sendCommand(0x04); //boost to start moving
 }
 
 // Instructs the train to stop its engine.
